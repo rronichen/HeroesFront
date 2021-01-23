@@ -1,0 +1,78 @@
+<main class="login-form">
+  <div class="cotainer">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header text-center"
+            style="background-color: #325b8626;">Login </div>
+            <div class="card-body">
+              <form (ngSubmit)="onLogin(loginForm)" #loginForm="ngForm" >
+                <div class="form-group row">
+                  <label for="username" class="col-md-4 col-form-label text-center text-sm-left"
+                    >Username</label>
+                  <div class="col-md-6">
+                    <input type="text" id="username" class="form-control"
+                      name="username" ngModel="username" #username="ngModel" email required >
+                  </div>
+                </div>
+                <div class="text-center warnningMassage" *ngIf="!this.username.valid && this.username.touched">
+                  please enter valid email
+                </div>
+                <div class="form-group row">
+                    <label for="password" class="col-md-4 col-form-label text-center text-sm-left"
+                      >Password</label>
+                    <div class="col-md-6">
+                        <input type="password" id="password" class="form-control"
+                          name="password" ngModel minlength="8" #password="ngModel" required>
+                    </div>
+                </div>
+                <div class="text-center warnningMassage" *ngIf="!this.password.valid && this.password.touched">
+                  please enter valid password
+                </div>
+                <div class="col text-center" *ngIf="isLoading">
+                  <br>
+                  <div class="spinner-border text-primary" role="status">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                  <br><br>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid"
+                      style="color: #ffffff; background-color: #2f578f;"
+                      >
+                        Send
+                    </button>
+                </div>
+              </form>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<div class="modal fade" id="errorModal" tabindex="-1"
+  role="dialog" aria-labelledby="errorModal" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="errorModal"> Error</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true"></span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="col">
+        There was an error
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary"
+          style="color: #ffffff; background-color: #2f578f;"
+          data-dismiss="modal">close</button>
+      </div>
+    </div>
+  </div>
+ </div>

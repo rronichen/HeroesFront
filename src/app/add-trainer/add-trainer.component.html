@@ -1,0 +1,99 @@
+<main class="login-form">
+  <div class="cotainer">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header text-center"
+            style="background-color: #325b8626;">Add Trainer </div>
+            <div class="col  text-center" *ngIf="isLoading">
+              <br>
+              <div class="spinner-border text-primary" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+            </div>
+            <div class="card-body">
+              <form (ngSubmit)="onAddTrainer(newTrainerForm)" #newTrainerForm="ngForm" >
+                <div class="form-group row">
+                  <label for="newTrainerEmail" class="col-md-4 col-form-label text-center text-sm-left"
+                    >Email</label>
+                  <div class="col-md-6">
+                    <input type="text" id="newTrainerEmail" class="form-control"
+                      name="newTrainerEmail" ngModel email required >
+                  </div>
+                </div>
+                <div class="form-group row">
+                    <label for="password" class="col-md-4 col-form-label text-center text-sm-left"
+                      >Password</label>
+                    <div class="col-md-6">
+                        <input type="password" id="password" class="form-control"
+                          name="password" ngModel minlength="8" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                  <label for="passwordRepeated" class="col-md-4 col-form-label text-center text-sm-left"
+                    >Confirm Password</label>
+                  <div class="col-md-6">
+                      <input type="password" id="confirmPassword" class="form-control"
+                        name="confirmPassword" ngModel minlength="8" required>
+                  </div>
+              </div>
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary" [disabled]="!newTrainerForm.valid"
+                      style="color: #ffffff; background-color: #2f578f;">
+                        Send
+                    </button>
+                </div>
+              </form>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<div class="modal fade rtl" id="trainerAddSucssModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="trainerAddSucssModal">!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true"></span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Trainer wad Saved successfuly
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal"
+
+          >close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="errorModal" tabindex="-1"
+  role="dialog" aria-labelledby="errorModal" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="errorModal"> Error</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true"></span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="col">
+        {{ errorMassage != null ? errorMassage : "There was an error" }}
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary"
+          style="color: #ffffff; background-color: #2f578f;"
+          data-dismiss="modal">close</button>
+      </div>
+    </div>
+  </div>
+</div>

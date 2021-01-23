@@ -1,0 +1,32 @@
+<div class="container">
+  <h3 class="d-flex justify-content-center">
+    <div style="background-color: #325b8610; " class="d-flex justify-content-center">
+    Heroes List
+    </div>
+  </h3>
+  <div class="col  text-center" *ngIf="isLoading">
+    <div class="spinner-border text-primary" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+  <div class="card  text-center" *ngFor="let hero of heroList; index as i;">
+    <h5 class="card-header font-weight-bold" style="color: rgb(213 1 1)">{{ hero.name }}</h5>
+    <div class="card-body">
+      <p class="card-text"><span></span>
+        <span class="boldTextColorBlue">Id: </span> {{ hero.id }} ,&nbsp;
+        <span class="boldTextColorBlue">Ability:</span> {{ hero.ability }} ,&nbsp;
+        <span class="boldTextColorBlue">Suit Colors:</span>  {{ hero.suitColor }},&nbsp;
+        <span class="boldTextColorBlue">Current Power:</span> {{ hero.currentPower  | number :'.5'}}
+      </p>
+      <button class="btn btn-secondary" [disabled]="hero.timesTrainsToday > 4"
+        (click)="startTraning(hero.id)">Start Traning</button> &nbsp;
+      <div class="div"  >
+        <span class="boldTextColorBlu">Times Train Today:</span>  {{ hero.timesTrainsToday }} &nbsp;
+        <span class="boldTextColorBlu">Time Start Train:</span>  {{ hero.dateLastTrain | date :' dd/MM/yy'}}
+      </div>
+
+    </div>
+  </div>
+
+
+</div>
